@@ -1,0 +1,17 @@
+{
+  "name": "DomiColor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mrluissan/DomiColor.git",
+  "author": "Luis Adame <mrluissan@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "node-vibrant": "^3.0.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.2"
+  }
+}
