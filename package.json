@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-	  "build": "parcel build"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./"
   },
   "dependencies": {
     "node-vibrant": "^3.0.0",
@@ -16,6 +17,7 @@
     "webpack-cli": "^3.0.8"
   },
   "devDependencies": {
-    "node-sass": "^4.9.2"
+    "node-sass": "^4.9.2",
+    "parcel-bundler": "^1.9.6"
   }
 }
