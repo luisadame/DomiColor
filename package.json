@@ -6,8 +6,12 @@
   "author": "Luis Adame <mrluissan@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+	  "build": "parcel build"
+  },
   "dependencies": {
     "node-vibrant": "^3.0.0",
+    "parcel": "^1.9.6",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   },
