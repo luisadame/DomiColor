@@ -57,6 +57,13 @@ class DomiColor {
 
         this.container.classList.add('active');
         let [width, height] = this.containerDimensions;
+        if (Utils.getRatio(this.imageCanvas) < 1) {
+            this.container.style.height = "auto";
+            this.container.style.width = "55%";
+        } else {
+            this.container.style.height = "";
+            this.container.style.width = "";
+        }
 
         // if(Utils.getRatio(this.imageCanvas) < 1) {
         //     this.container.style.height = `${Utils.getRatio(this.imageCanvas, true) * width}px`;
