@@ -56,13 +56,14 @@ class DomiColor {
     showImage() {
 
         this.container.classList.add('active');
-        let [width, height] = this.containerDimensions;
-        if (Utils.getRatio(this.imageCanvas) < 1) {
-            this.container.style.height = "auto";
-            this.container.style.width = "55%";
-        } else {
-            this.container.style.height = "";
-            this.container.style.width = "";
+        if(window.innerWidth > 760) {
+            if (Utils.getRatio(this.imageCanvas) < 1) {
+                this.container.style.height = "auto";
+                this.container.style.width = "55%";
+            } else {
+                this.container.style.height = "";
+                this.container.style.width = "";
+            }
         }
 
         // if(Utils.getRatio(this.imageCanvas) < 1) {
