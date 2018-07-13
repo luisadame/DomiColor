@@ -213,6 +213,7 @@ var DomiColor = function () {
         this.imageInput = document.querySelector('.image__input');
         this.$image__border = document.querySelector('.image__border');
         this.$palette = document.querySelector('.palette');
+        this.imageIsPortrait = false;
         this.containerDimensions = [this.container.offsetWidth, this.container.offsetHeight];
         this.events = [{
             'handler': function handler(e) {
@@ -250,19 +251,37 @@ var DomiColor = function () {
             'handler': this.showImage.bind(this),
             'element': this.imageCanvas,
             'event': 'load'
+        }, {
+            'handler': this.resizeImage.bind(this),
+            'element': window,
+            'event': 'resize'
         }];
     }
 
     _createClass(DomiColor, [{
+        key: 'resizeImage',
+        value: function resizeImage() {
+            if (window.innerWidth >= 1375 && this.imageIsPortrait) {
+                this.container.style.height = "auto";
+                this.container.style.width = "55%";
+            }
+            if (window.innerWidth <= 760) {
+                this.container.style.height = "";
+                this.container.style.width = "";
+            }
+        }
+    }, {
         key: 'showImage',
         value: function showImage() {
 
             this.container.classList.add('active');
-            if (window.innerWidth <= 760) {
+            if (window.innerWidth > 760) {
                 if (_utils2.default.getRatio(this.imageCanvas) < 1) {
+                    this.imageIsPortrait = true;
                     this.container.style.height = "auto";
                     this.container.style.width = "55%";
                 } else {
+                    this.imageIsPortrait = false;
                     this.container.style.height = "";
                     this.container.style.width = "";
                 }
@@ -367,7 +386,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '37697' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '35875' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

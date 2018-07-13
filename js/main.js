@@ -11,6 +11,7 @@ class DomiColor {
         this.imageInput = document.querySelector('.image__input');
         this.$image__border = document.querySelector('.image__border');
         this.$palette = document.querySelector('.palette');
+        this.imageIsPortrait = false;
         this.containerDimensions = [this.container.offsetWidth, this.container.offsetHeight];
         this.events = [{
                 'handler': e => this.read(e.target.files[0]).bind(this),
@@ -49,8 +50,24 @@ class DomiColor {
                 'handler': this.showImage.bind(this),
                 'element': this.imageCanvas,
                 'event': 'load'
+            },
+            {
+                'handler': this.resizeImage.bind(this),
+                'element': window,
+                'event': 'resize'
             }
         ];
+    }
+
+    resizeImage() {
+        if(window.innerWidth >= 1375 && this.imageIsPortrait) {
+            this.container.style.height = "auto";
+            this.container.style.width = "55%";
+        }
+        if (window.innerWidth <= 760) {
+            this.container.style.height = "";
+            this.container.style.width = "";
+        }
     }
 
     showImage() {
@@ -58,9 +75,11 @@ class DomiColor {
         this.container.classList.add('active');
         if(window.innerWidth > 760) {
             if (Utils.getRatio(this.imageCanvas) < 1) {
+                this.imageIsPortrait = true;
                 this.container.style.height = "auto";
                 this.container.style.width = "55%";
             } else {
+                this.imageIsPortrait = false;
                 this.container.style.height = "";
                 this.container.style.width = "";
             }
