@@ -54,18 +54,18 @@ class DomiColor {
     }
 
     showImage() {
-        this.parentGrid.style.gridTemplateColumns = "auto 1fr";
-        this.imageCanvas.classList.add('active');
+
+        this.container.classList.add('active');
         let [width, height] = this.containerDimensions;
 
-        if(Utils.getRatio(this.imageCanvas) < 1) {
-            this.container.style.height = `${Utils.getRatio(this.imageCanvas, true) * width}px`;
-            this.parentGrid.style.gridTemplateColumns = "35% 1fr";
-            this.container.style.width = "100%";
-        } else {
-            this.container.style.width = `${Utils.getRatio(this.imageCanvas) * height}px`;
-            this.container.style.height = "60%";
-        }
+        // if(Utils.getRatio(this.imageCanvas) < 1) {
+        //     this.container.style.height = `${Utils.getRatio(this.imageCanvas, true) * width}px`;
+        //     this.parentGrid.style.gridTemplateColumns = "35% 1fr";
+        //     this.container.style.width = "100%";
+        // } else {
+        //     this.container.style.width = `${Utils.getRatio(this.imageCanvas) * height}px`;
+        //     this.container.style.height = "60%";
+        // }
     }
 
     dropImage(e) {
@@ -105,6 +105,7 @@ class DomiColor {
         });
         this.$palette.innerHTML = '';
         this.$palette.appendChild(fragment);
+        this.$palette.style.opacity = 1;
     }
 
     run() {
