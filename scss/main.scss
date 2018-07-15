@@ -103,7 +103,7 @@ body {
     @media only screen and (min-width: 1375px) {
         --container__padding: 5em;
         display: grid;
-        grid-template-columns: minmax(600px, 1fr) 1fr;
+        grid-template-columns: minmax(530px, 1fr) 1fr;
         grid-column-gap: 4em;
         grid-template-rows: min-content;
     }
@@ -154,7 +154,7 @@ body {
     position: relative;
     transition: all 210ms ease-out;
     max-width: 600px;
-    max-height: 90vh;
+    max-height: 80%;
     margin-top: 3em;
     margin-bottom: 2em;
     z-index: 2;
@@ -162,6 +162,9 @@ body {
     @media only screen and (min-width: 615px) {
         margin-top: 5em;
         height: 35%;
+        &.active {
+            height: auto;
+        }
     }
 
     @media only screen and (min-width: 750px) {
@@ -169,12 +172,12 @@ body {
     }
 
     @media only screen and (min-width: 1375px) {
-       min-height: 60%;
+       height: 60%;
        margin: 0;
        align-self: center;
 
        &.active {
-           max-width: 100%;
+           max-width: 55%;
        }
     }
 
@@ -186,10 +189,19 @@ body {
     }
     .image__canvas {
         display: block;
-        opacity: 1;
+        //opacity: 1;
     }
     .icon, .label__description {
         display: none;
+    }
+    &.portrait {
+        height: auto;
+        min-width: 21.5vh;
+        max-height: 100%;
+    }
+    &.landscape {
+        max-width: 100%;
+        min-height: auto;
     }
 }
 
@@ -259,8 +271,8 @@ body {
 
 .palette {
     box-shadow: 0 0 0 10px white, 0px 12px 30px black;
-    display: grid;
-    grid-auto-flow: row;
+    display: flex;
+    flex-direction: column;
     justify-self: center;
     border-radius: 8px;
     overflow: hidden;
@@ -273,7 +285,7 @@ body {
     transition: opacity 200ms ease-out;
 
     @media only screen and (min-width: 1375px) {
-        grid-auto-flow: column;
+        flex-direction: row;
         height: 70%;
         .color {
             padding: 2em;
@@ -288,5 +300,11 @@ body {
         text-transform: uppercase;
         box-shadow: 0px 0 15px #00000080;
         padding: 2em 0;
+        flex: 1;
+        transition: all 200ms ease-out;
+        &:hover {
+            flex-grow: 4;
+            z-index: 1;
+        }
     }
 }

@@ -55,44 +55,38 @@ class DomiColor {
                 'handler': this.resizeImage.bind(this),
                 'element': window,
                 'event': 'resize'
+            },
+            {
+                'handler': this.containerTransition.bind(this),
+                'element': this.container,
+                'event': 'transitionend'
             }
         ];
     }
 
+    isPortraitAndBigScreen() {
+        return window.innerWidth > 760 && this.imageIsPortrait;
+    }
+
+    containerTransition(e) {
+        console.log(e);
+        this.imageCanvas.style.opacity = 1
+    }
+
     resizeImage() {
-        if(window.innerWidth >= 1375 && this.imageIsPortrait) {
-            this.container.style.height = "auto";
-            this.container.style.width = "55%";
-        }
-        if (window.innerWidth <= 760) {
-            this.container.style.height = "";
-            this.container.style.width = "";
+        if(this.isPortraitAndBigScreen()) {
+            this.container.classList.remove('landscape');
+            this.container.classList.add('portrait');
+        } else {
+            this.container.classList.remove('portrait');
+            this.container.classList.add('landscape');
         }
     }
 
     showImage() {
-
         this.container.classList.add('active');
-        if(window.innerWidth > 760) {
-            if (Utils.getRatio(this.imageCanvas) < 1) {
-                this.imageIsPortrait = true;
-                this.container.style.height = "auto";
-                this.container.style.width = "55%";
-            } else {
-                this.imageIsPortrait = false;
-                this.container.style.height = "";
-                this.container.style.width = "";
-            }
-        }
-
-        // if(Utils.getRatio(this.imageCanvas) < 1) {
-        //     this.container.style.height = `${Utils.getRatio(this.imageCanvas, true) * width}px`;
-        //     this.parentGrid.style.gridTemplateColumns = "35% 1fr";
-        //     this.container.style.width = "100%";
-        // } else {
-        //     this.container.style.width = `${Utils.getRatio(this.imageCanvas) * height}px`;
-        //     this.container.style.height = "60%";
-        // }
+        this.imageIsPortrait = Utils.getRatio(this.imageCanvas) < 1;
+        this.resizeImage();
     }
 
     dropImage(e) {
@@ -112,6 +106,7 @@ class DomiColor {
         const reader = new FileReader();
         reader.onload = data => {
             const src = data.target.result;
+            this.imageCanvas.style.opacity = 0;
             this.imageCanvas.src = src;
             let v = Vibrant.from(src).useQuantizer(Vibrant.Quantizer.WebWorker);
             v.getPalette().then(this.processPalette.bind(this));

@@ -255,46 +255,41 @@ var DomiColor = function () {
             'handler': this.resizeImage.bind(this),
             'element': window,
             'event': 'resize'
+        }, {
+            'handler': this.containerTransition.bind(this),
+            'element': this.container,
+            'event': 'transitionend'
         }];
     }
 
     _createClass(DomiColor, [{
+        key: 'isPortraitAndBigScreen',
+        value: function isPortraitAndBigScreen() {
+            return window.innerWidth > 760 && this.imageIsPortrait;
+        }
+    }, {
+        key: 'containerTransition',
+        value: function containerTransition(e) {
+            console.log(e);
+            this.imageCanvas.style.opacity = 1;
+        }
+    }, {
         key: 'resizeImage',
         value: function resizeImage() {
-            if (window.innerWidth >= 1375 && this.imageIsPortrait) {
-                this.container.style.height = "auto";
-                this.container.style.width = "55%";
-            }
-            if (window.innerWidth <= 760) {
-                this.container.style.height = "";
-                this.container.style.width = "";
+            if (this.isPortraitAndBigScreen()) {
+                this.container.classList.remove('landscape');
+                this.container.classList.add('portrait');
+            } else {
+                this.container.classList.remove('portrait');
+                this.container.classList.add('landscape');
             }
         }
     }, {
         key: 'showImage',
         value: function showImage() {
-
             this.container.classList.add('active');
-            if (window.innerWidth > 760) {
-                if (_utils2.default.getRatio(this.imageCanvas) < 1) {
-                    this.imageIsPortrait = true;
-                    this.container.style.height = "auto";
-                    this.container.style.width = "55%";
-                } else {
-                    this.imageIsPortrait = false;
-                    this.container.style.height = "";
-                    this.container.style.width = "";
-                }
-            }
-
-            // if(Utils.getRatio(this.imageCanvas) < 1) {
-            //     this.container.style.height = `${Utils.getRatio(this.imageCanvas, true) * width}px`;
-            //     this.parentGrid.style.gridTemplateColumns = "35% 1fr";
-            //     this.container.style.width = "100%";
-            // } else {
-            //     this.container.style.width = `${Utils.getRatio(this.imageCanvas) * height}px`;
-            //     this.container.style.height = "60%";
-            // }
+            this.imageIsPortrait = _utils2.default.getRatio(this.imageCanvas) < 1;
+            this.resizeImage();
         }
     }, {
         key: 'dropImage',
@@ -318,6 +313,7 @@ var DomiColor = function () {
             var reader = new FileReader();
             reader.onload = function (data) {
                 var src = data.target.result;
+                _this2.imageCanvas.style.opacity = 0;
                 _this2.imageCanvas.src = src;
                 var v = Vibrant.from(src).useQuantizer(Vibrant.Quantizer.WebWorker);
                 v.getPalette().then(_this2.processPalette.bind(_this2));
@@ -386,7 +382,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '35875' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '38623' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
