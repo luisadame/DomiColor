@@ -254,10 +254,13 @@ body {
     justify-content: center;
     flex-direction: column;
     text-transform: uppercase;
-    box-shadow: 0px 0 15px #00000080;
+    overflow: hidden;
     padding: 2em 0;
     flex: 1;
     transition: all 200ms ease-out; }
+    @media only screen and (min-width: 1375px) {
+      .palette .color {
+        box-shadow: 0px 0 15px #00000080; } }
     .palette .color:hover {
       flex-grow: 4;
       z-index: 1; }
