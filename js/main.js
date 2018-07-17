@@ -2,6 +2,8 @@
 import '../scss/main.scss';
 // Scripts
 import Utils from './utils';
+import Vue from 'vue/dist/vue.js';
+import ColorComponent from './components/Color.vue';
 
 class DomiColor {
     constructor() {
@@ -11,6 +13,7 @@ class DomiColor {
         this.imageInput = document.querySelector('.image__input');
         this.$image__border = document.querySelector('.image__border');
         this.$palette = document.querySelector('.palette');
+        this.$colors = document.querySelectorAll('.color');
         this.imageIsPortrait = false;
         this.containerDimensions = [this.container.offsetWidth, this.container.offsetHeight];
         this.events = [{
@@ -68,9 +71,15 @@ class DomiColor {
         return window.innerWidth > 760 && this.imageIsPortrait;
     }
 
-    containerTransition(e) {
-        console.log(e);
+    containerTransition() {
         this.imageCanvas.style.opacity = 1
+    }
+
+    copyColor(e) {
+        Utils.selectText(e.target);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        console.log('Copied!');
     }
 
     resizeImage() {
@@ -114,18 +123,22 @@ class DomiColor {
         reader.readAsDataURL(file);
     }
 
-    processPalette(palette) {
-        let colors = Object.values(palette).filter(c => c!=null);
-        let fragment = document.createDocumentFragment();
-        colors.forEach(color => {
-            let colorElement = document.createElement('div');
-            colorElement.classList.add('color');
-            colorElement.style.background = color.getHex();
-            colorElement.style.color = color.getBodyTextColor();
-            colorElement.innerText = color.getHex();
-            fragment.appendChild(colorElement);
+    createColorElement([name, color]) {
+        let colorComponent = Vue.extend(ColorComponent);
+        let colorElement = new colorComponent({
+            propsData: {title: name, color: color}
         });
-        this.$palette.innerHTML = '';
+        colorElement.$mount();
+        return colorElement;
+    }
+
+    processPalette(palette) {
+        let swatches = Object.entries(palette).filter(swatch => swatch[1] != null);
+        let fragment = document.createDocumentFragment();
+        swatches.forEach(swatch =>
+                fragment.appendChild(this.createColorElement(swatch).$el)
+        );
+        this.$palette.innerHTML = "";
         this.$palette.appendChild(fragment);
         this.$palette.style.opacity = 1;
     }
@@ -133,7 +146,7 @@ class DomiColor {
     run() {
         this.events.forEach(event => {
             event.element.addEventListener(event.event, event.handler);
-        })
+        });
     }
 }
 const domicolor = new DomiColor();

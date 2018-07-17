@@ -13,11 +13,17 @@
   "dependencies": {
     "node-vibrant": "^3.0.0",
     "parcel": "^1.9.6",
+    "vue": "^2.5.16",
+    "vue-hot-reload-api": "^2.3.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   },
   "devDependencies": {
+    "@vue/component-compiler-utils": "^2.1.0",
     "node-sass": "^4.9.2",
-    "parcel-bundler": "^1.9.6"
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-vue": "^2.0.0",
+    "parcel-bundler": "^1.9.6",
+    "vue-template-compiler": "^2.5.16"
   }
 }
