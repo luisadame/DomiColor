@@ -71,7 +71,6 @@ class DomiColor {
         return window.innerWidth > 760 && this.imageIsPortrait;
     }
 
-<<<<<<< HEAD
     containerTransition() {
         this.imageCanvas.style.opacity = 1
     }
@@ -90,17 +89,6 @@ class DomiColor {
         } else {
             this.container.classList.remove('portrait');
             this.container.classList.add('landscape');
-=======
-        this.container.classList.add('active');
-        if(window.innerWidth <= 760) {
-            if (Utils.getRatio(this.imageCanvas) < 1) {
-                this.container.style.height = "auto";
-                this.container.style.width = "55%";
-            } else {
-                this.container.style.height = "";
-                this.container.style.width = "";
-            }
->>>>>>> 4db38c8397748ff1695d5e3aae8d9a63e3f494f6
         }
     }
 
