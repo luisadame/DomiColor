@@ -18811,8 +18811,6 @@ render._withStripped = true
 },{"../utils.js":"js/utils.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/main.js":[function(require,module,exports) {
 'use strict';
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 require('../scss/main.scss');
@@ -18931,8 +18929,29 @@ var DomiColor = function () {
         key: 'showImage',
         value: function showImage() {
             this.container.classList.add('active');
+<<<<<<< HEAD
             this.imageIsPortrait = _utils2.default.getRatio(this.imageCanvas) < 1;
             this.resizeImage();
+=======
+            if (window.innerWidth <= 760) {
+                if (_utils2.default.getRatio(this.imageCanvas) < 1) {
+                    this.container.style.height = "auto";
+                    this.container.style.width = "55%";
+                } else {
+                    this.container.style.height = "";
+                    this.container.style.width = "";
+                }
+            }
+
+            // if(Utils.getRatio(this.imageCanvas) < 1) {
+            //     this.container.style.height = `${Utils.getRatio(this.imageCanvas, true) * width}px`;
+            //     this.parentGrid.style.gridTemplateColumns = "35% 1fr";
+            //     this.container.style.width = "100%";
+            // } else {
+            //     this.container.style.width = `${Utils.getRatio(this.imageCanvas) * height}px`;
+            //     this.container.style.height = "60%";
+            // }
+>>>>>>> 4db38c8397748ff1695d5e3aae8d9a63e3f494f6
         }
     }, {
         key: 'dropImage',
@@ -19036,7 +19055,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + '40163' + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '37697' + '/');
+>>>>>>> 4db38c8397748ff1695d5e3aae8d9a63e3f494f6
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
