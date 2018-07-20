@@ -106,6 +106,9 @@ body {
         grid-template-columns: minmax(530px, 1fr) 1fr;
         grid-column-gap: 4em;
         grid-template-rows: min-content;
+        &.isAbout {
+            grid-template-columns: 70%;
+        }
     }
     --h: calc(100vh - var(--padding)*2 - var(--container__padding)*2);
     border-radius: 18px;
@@ -119,6 +122,7 @@ body {
 
 .header {
     grid-column: 1 / -1;
+    position: relative;
 }
 
 .header__title {
@@ -133,6 +137,29 @@ body {
     @media only screen and (min-width: 1375px) {
         color: #000;
         text-shadow: none;
+    }
+}
+
+.header__subtitle {
+    display: none;
+    @media only screen and (min-width: 760px) {
+        display: block;
+    }
+}
+
+.icon-question {
+    font-size: 2em;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    color: white;
+    z-index: 4;
+    cursor: pointer;
+
+    @media only screen and (min-width: 760px) {
+        &.icon{
+            display: none;
+        }
     }
 }
 
@@ -281,7 +308,6 @@ body {
     align-self: center;
     position: relative;
     z-index: 2;
-    opacity: 0;
     transition: opacity 200ms ease-out;
 
     @media only screen and (min-width: 1375px) {
@@ -321,6 +347,17 @@ body {
     opacity: 0;
     transform: translate3d(-100%, 0, 0);
     transition: all 200ms ease-out;
+}
+
+.about {
+    padding-top: 2em;
+    padding-bottom: 3em;
+    @media only screen and (min-width: 760px) {
+        width: 90%;
+    }
+    @media only screen and (min-width: 1375px) {
+        padding: 0;
+    }
 }
 
 .hidden {

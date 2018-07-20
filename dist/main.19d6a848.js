@@ -169,37 +169,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../assets/curves.svg":[["curves.10715560.svg","assets/curves.svg"],"assets/curves.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function getRatio(img) {
-    var swap = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    var division = swap ? img.naturalHeight / img.naturalWidth : img.naturalWidth / img.naturalHeight;
-    return +division.toFixed(2);
-}
-
-function selectText(node) {
-    if (document.body.createTextRange) {
-        var range = document.body.createTextRange();
-        range.moveToElementText(node);
-        range.select();
-    } else if (window.getSelection) {
-        var selection = window.getSelection();
-        var _range = document.createRange();
-        _range.selectNodeContents(node);
-        selection.removeAllRanges();
-        selection.addRange(_range);
-    } else {
-        console.warn("Could not select text in node: Unsupported browser.");
-    }
-}
-
-exports.default = { getRatio: getRatio, selectText: selectText };
-},{}],"node_modules/vue/dist/vue.js":[function(require,module,exports) {
+},{"./../assets/curves.svg":[["curves.10715560.svg","assets/curves.svg"],"assets/curves.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/vue/dist/vue.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 /*!
@@ -11150,6 +11120,36 @@ return Vue;
 
 })));
 
+},{}],"js/utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function getRatio(img) {
+    var swap = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    var division = swap ? img.naturalHeight / img.naturalWidth : img.naturalWidth / img.naturalHeight;
+    return +division.toFixed(2);
+}
+
+function selectText(node) {
+    if (document.body.createTextRange) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(node);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        var _range = document.createRange();
+        _range.selectNodeContents(node);
+        selection.removeAllRanges();
+        selection.addRange(_range);
+    } else {
+        console.warn("Could not select text in node: Unsupported browser.");
+    }
+}
+
+exports.default = { getRatio: getRatio, selectText: selectText };
 },{}],"node_modules/vue-hot-reload-api/dist/index.js":[function(require,module,exports) {
 var Vue // late bind
 var version
@@ -18808,22 +18808,24 @@ render._withStripped = true
         
       }
     })();
-},{"../utils.js":"js/utils.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/main.js":[function(require,module,exports) {
+},{"../utils.js":"js/utils.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"js/Domicolor.js":[function(require,module,exports) {
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-require('../scss/main.scss');
+var _vue = require('vue/dist/vue');
+
+var _vue2 = _interopRequireDefault(_vue);
 
 var _utils = require('./utils');
 
 var _utils2 = _interopRequireDefault(_utils);
-
-var _vue = require('vue/dist/vue.js');
-
-var _vue2 = _interopRequireDefault(_vue);
 
 var _Color = require('./components/Color.vue');
 
@@ -18831,10 +18833,7 @@ var _Color2 = _interopRequireDefault(_Color);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } // Scss
-
-// Scripts
-
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var DomiColor = function () {
     function DomiColor() {
@@ -18875,7 +18874,8 @@ var DomiColor = function () {
             'event': 'dragleave'
         }, {
             'handler': function handler(e) {
-                e.stopPropagation();e.preventDefault();
+                e.stopPropagation();
+                e.preventDefault();
             },
             'element': document.querySelector('.image__label'),
             'event': 'dragover'
@@ -18972,7 +18972,10 @@ var DomiColor = function () {
 
             var colorComponent = _vue2.default.extend(_Color2.default);
             var colorElement = new colorComponent({
-                propsData: { title: name, color: color }
+                propsData: {
+                    title: name,
+                    color: color
+                }
             });
             colorElement.$mount();
             return colorElement;
@@ -18991,7 +18994,7 @@ var DomiColor = function () {
             });
             this.$palette.innerHTML = "";
             this.$palette.appendChild(fragment);
-            this.$palette.style.opacity = 1;
+            this.$palette.classList.remove('hidden');
         }
     }, {
         key: 'run',
@@ -19005,9 +19008,37 @@ var DomiColor = function () {
     return DomiColor;
 }();
 
-var domicolor = new DomiColor();
+exports.default = DomiColor;
+},{"vue/dist/vue":"node_modules/vue/dist/vue.js","./utils":"js/utils.js","./components/Color.vue":"js/components/Color.vue"}],"js/main.js":[function(require,module,exports) {
+'use strict';
+
+require('../scss/main.scss');
+
+var _vue = require('vue/dist/vue.js');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _Domicolor = require('./Domicolor');
+
+var _Domicolor2 = _interopRequireDefault(_Domicolor);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ---------- //
+
+
+// Scripts
+new _vue2.default({
+    el: '.container',
+    data: {
+        about: false
+    }
+}); // Scss
+
+
+var domicolor = new _Domicolor2.default();
 domicolor.run();
-},{"../scss/main.scss":"scss/main.scss","./utils":"js/utils.js","vue/dist/vue.js":"node_modules/vue/dist/vue.js","./components/Color.vue":"js/components/Color.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../scss/main.scss":"scss/main.scss","vue/dist/vue.js":"node_modules/vue/dist/vue.js","./Domicolor":"js/Domicolor.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -19036,7 +19067,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '46085' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '42143' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
