@@ -363,3 +363,7 @@ body {
     visibility: hidden;
     opacity: 0;
 }
+
+[v-cloak] {
+    display: none;
+}
