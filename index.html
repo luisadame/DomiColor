@@ -13,10 +13,12 @@
         <header class="header">
             <h1 class="header__title">DOMI<wbr>COLOR</h1>
             <p class="header__subtitle">Extract dominant colors <wbr>from an image. <a href="#about" @click="about = !about" v-text="about ? 'Back' : 'About'"></a></p>
-            <svg class="icon icon-question" v-on:click="about = !about"viewBox="0 0 20 20">
-                <title>Information - About</title>
-                <path d="M10 20c-5.523 0-10-4.477-10-10s4.477-10 10-10v0c5.523 0 10 4.477 10 10s-4.477 10-10 10v0zM12 7c0 0.28-0.21 0.8-0.42 1l-1.58 1.58c-0.57 0.58-1 1.6-1 2.42v1h2v-1c0-0.29 0.21-0.8 0.42-1l1.58-1.58c0.57-0.58 1-1.6 1-2.42 0-2.209-1.791-4-4-4s-4 1.791-4 4v0h2c0-1.105 0.895-2 2-2s2 0.895 2 2v0zM9 15v2h2v-2h-2z"></path>
-            </svg>
+            <button @click="about = !about" class="header__about--button">
+                <svg class="icon icon-question" viewBox="0 0 20 20">
+                    <title>Information - About</title>
+                    <path d="M10 20c-5.523 0-10-4.477-10-10s4.477-10 10-10v0c5.523 0 10 4.477 10 10s-4.477 10-10 10v0zM12 7c0 0.28-0.21 0.8-0.42 1l-1.58 1.58c-0.57 0.58-1 1.6-1 2.42v1h2v-1c0-0.29 0.21-0.8 0.42-1l1.58-1.58c0.57-0.58 1-1.6 1-2.42 0-2.209-1.791-4-4-4s-4 1.791-4 4v0h2c0-1.105 0.895-2 2-2s2 0.895 2 2v0zM9 15v2h2v-2h-2z"></path>
+                </svg>
+            </button>
         </header>
         <div v-show="!about" class="image">
             <label class="image__label">

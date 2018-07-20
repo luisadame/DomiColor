@@ -146,23 +146,21 @@ body {
         display: block;
     }
 }
-
-.icon-question {
+.header__about--button {
     font-size: 2em;
     position: absolute;
     top: 10px;
     right: 0;
     color: white;
     z-index: 4;
+    background: none;
+    border: none;
     cursor: pointer;
 
     @media only screen and (min-width: 760px) {
-        &.icon{
-            display: none;
-        }
+        display: none;
     }
 }
-
 .icon {
     display: inline-block;
     width: 1em;
