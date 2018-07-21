@@ -19014,8 +19014,6 @@ exports.default = DomiColor;
 
 require('../scss/main.scss');
 
-require('../favicon.png');
-
 var _vue = require('vue/dist/vue.js');
 
 var _vue2 = _interopRequireDefault(_vue);
@@ -19030,17 +19028,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 // Scripts
-// Scss
 new _vue2.default({
     el: '.container',
     data: {
         about: false
     }
-});
+}); // Scss
+
 
 var domicolor = new _Domicolor2.default();
 domicolor.run();
-},{"../scss/main.scss":"scss/main.scss","../favicon.png":"favicon.png","vue/dist/vue.js":"node_modules/vue/dist/vue.js","./Domicolor":"js/Domicolor.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../scss/main.scss":"scss/main.scss","vue/dist/vue.js":"node_modules/vue/dist/vue.js","./Domicolor":"js/Domicolor.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -19069,7 +19067,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '35049' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '36721' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -19288,6 +19286,6 @@ LazyPromise.prototype.catch = function (onError) {
   return this.promise.catch(onError);
 };
 },{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],0:[function(require,module,exports) {
-var b=require("node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.load([["favicon.b152895b.png","favicon.png"]]).then(function(){require("js/main.js");});
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
+var b=require("node_modules/parcel-bundler/src/builtins/bundle-loader.js");
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"js/main.js"], null)
 //# sourceMappingURL=/main.19d6a848.map

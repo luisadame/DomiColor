@@ -1,6 +1,5 @@
 // Scss
 import '../scss/main.scss';
-import '../favicon.png';
 
 // Scripts
 import Vue from 'vue/dist/vue.js';
