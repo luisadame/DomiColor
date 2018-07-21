@@ -309,3 +309,6 @@ body {
   position: absolute;
   visibility: hidden;
   opacity: 0; }
+
+[v-cloak] {
+  display: none; }
