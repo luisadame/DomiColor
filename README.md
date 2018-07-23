@@ -1,3 +1,4 @@
+![Logo](logo.png)
 # DomiColor
 DomiColor is a web application that **extracts dominant colors from an image** and displays useful information about them.
 

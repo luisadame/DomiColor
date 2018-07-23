@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000"
-   height="1000"
-   viewBox="0 0 264.58333 264.58334"
+   width="1001.5118"
+   height="1001.5118"
+   viewBox="0 0 264.98334 264.98335"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -19,7 +19,7 @@
   <defs
      id="defs2">
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter1015">
       <feFlood
@@ -51,7 +51,7 @@
          id="feComposite1013" />
     </filter>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter1183">
       <feFlood
@@ -90,9 +90,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="514.52476"
-     inkscape:cy="513.80028"
+     inkscape:zoom="0.7"
+     inkscape:cx="401.09938"
+     inkscape:cy="548.27598"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -103,7 +103,11 @@
      inkscape:window-height="1052"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -120,14 +124,16 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-32.416659)">
+     transform="translate(0.95595242,-31.460707)">
     <rect
        style="opacity:1;fill:#31207e;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect815"
        width="264.58334"
        height="264.58334"
        x="-0.75595242"
-       y="31.660707" />
+       y="31.660707"
+       inkscape:export-xdpi="4.7927542"
+       inkscape:export-ydpi="4.7927542" />
     <rect
        y="47.493427"
        x="13.607143"
@@ -147,24 +153,24 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot829"
-       style="fill:black;fill-opacity:1;stroke:none;font-family:Nunito;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:51.04000092px;word-spacing:0px;-inkscape-font-specification:Nunito;font-stretch:normal;font-variant:normal"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Nunito;-inkscape-font-specification:Nunito;letter-spacing:51.04000092px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
          id="flowRegion831"><rect
            id="rect833"
            width="568.57141"
            height="457.14285"
            x="145.71428"
            y="265.71429" /></flowRegion><flowPara
-         id="flowPara835"></flowPara></flowRoot>    <flowRoot
+         id="flowPara835" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot841"
-       style="fill:black;fill-opacity:1;stroke:none;font-family:Nunito;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:51.04000092px;word-spacing:0px;-inkscape-font-specification:Nunito;font-stretch:normal;font-variant:normal"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Nunito;-inkscape-font-specification:Nunito;letter-spacing:51.04000092px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
          id="flowRegion843"><rect
            id="rect845"
            width="42.857143"
            height="94.285713"
            x="414.28571"
            y="534.28571" /></flowRegion><flowPara
-         id="flowPara847"></flowPara></flowRoot>    <g
+         id="flowPara847" /></flowRoot>    <g
        id="g1222"
        transform="translate(5.0351712)">
       <path
