@@ -18674,44 +18674,48 @@ if (inBrowser) {
 
 exports.default = Vue;
 },{}],"js/components/Color.vue":[function(require,module,exports) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
-var _utils = require('../utils.js');
+var _utils = require("../utils.js");
 
 var _utils2 = _interopRequireDefault(_utils);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    props: ['title', 'color'],
-    data: function data() {
-        return {
-            model: this.color.getHex()
-        };
-    },
+  props: ["title", "color"],
+  data: function data() {
+    return {
+      model: this.color.getHex()
+    };
+  },
 
-    methods: {
-        copyColor: function copyColor() {
-            _utils2.default.selectText(this.$el.querySelector('.color__model'));
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-        },
-        changeTo: function changeTo(colorModel) {
-            if (colorModel === 'rgb') colorModel = this.color.getRgb();
-            if (colorModel === 'hex') colorModel = this.color.getHex();
-            if (colorModel === 'hsl') colorModel = this.color.getHsl();
-            this.model = colorModel;
-        }
+  methods: {
+    copyColor: function copyColor() {
+      _utils2.default.selectText(this.$el.querySelector(".color__model"));
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
     },
-    mounted: function mounted() {
-        this.$el.style.background = this.color.getHex();
-        this.$el.style.color = this.color.getBodyTextColor();
-        console.log('im being mounted');
+    changeTo: function changeTo(colorModel) {
+      if (colorModel === "rgb") colorModel = "rgb(" + this.color.getRgb().join(", ") + ")"; // return as [r, g, b]
+      if (colorModel === "hex") colorModel = this.color.getHex();
+      if (colorModel === "hsl") colorModel = this.toHSL(this.color.getHsl());
+      this.model = colorModel;
+    },
+    toHSL: function toHSL(hslAsArray) {
+      // hsl is (angle, percentage , percentage)
+      return "hsl(" + Math.floor(hslAsArray[0] * 360) + ", " + Math.floor(hslAsArray[1] * 100) + "%, " + Math.floor(hslAsArray[1] * 100) + "%)";
     }
+  },
+  mounted: function mounted() {
+    this.$el.style.background = this.color.getHex();
+    this.$el.style.color = this.color.getBodyTextColor();
+    console.log("im being mounted");
+  }
 }; //
 //
 //
@@ -19067,7 +19071,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '36721' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '37599' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -19208,84 +19212,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}],"node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
-var getBundleURL = require('./bundle-url').getBundleURL;
-
-function loadBundlesLazy(bundles) {
-  if (!Array.isArray(bundles)) {
-    bundles = [bundles];
-  }
-
-  var id = bundles[bundles.length - 1];
-
-  try {
-    return Promise.resolve(require(id));
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      return new LazyPromise(function (resolve, reject) {
-        loadBundles(bundles.slice(0, -1)).then(function () {
-          return require(id);
-        }).then(resolve, reject);
-      });
-    }
-
-    throw err;
-  }
-}
-
-function loadBundles(bundles) {
-  return Promise.all(bundles.map(loadBundle));
-}
-
-var bundleLoaders = {};
-function registerBundleLoader(type, loader) {
-  bundleLoaders[type] = loader;
-}
-
-module.exports = exports = loadBundlesLazy;
-exports.load = loadBundles;
-exports.register = registerBundleLoader;
-
-var bundles = {};
-function loadBundle(bundle) {
-  var id;
-  if (Array.isArray(bundle)) {
-    id = bundle[1];
-    bundle = bundle[0];
-  }
-
-  if (bundles[bundle]) {
-    return bundles[bundle];
-  }
-
-  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
-  var bundleLoader = bundleLoaders[type];
-  if (bundleLoader) {
-    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
-      if (resolved) {
-        module.bundle.register(id, resolved);
-      }
-
-      return resolved;
-    });
-  }
-}
-
-function LazyPromise(executor) {
-  this.executor = executor;
-  this.promise = null;
-}
-
-LazyPromise.prototype.then = function (onSuccess, onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.then(onSuccess, onError);
-};
-
-LazyPromise.prototype.catch = function (onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.catch(onError);
-};
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],0:[function(require,module,exports) {
-var b=require("node_modules/parcel-bundler/src/builtins/bundle-loader.js");
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0,"js/main.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
 //# sourceMappingURL=/main.19d6a848.map

@@ -10,32 +10,39 @@
     </div>
 </template>
 <script>
-import Utils from '../utils.js';
+import Utils from "../utils.js";
 export default {
-    props: ['title', 'color'],
-    data() {
-        return {
-            model: this.color.getHex()
-        }
+  props: ["title", "color"],
+  data() {
+    return {
+      model: this.color.getHex()
+    };
+  },
+  methods: {
+    copyColor() {
+      Utils.selectText(this.$el.querySelector(".color__model"));
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
     },
-    methods: {
-        copyColor() {
-            Utils.selectText(this.$el.querySelector('.color__model'));
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-        },
-        changeTo(colorModel) {
-            if(colorModel === 'rgb') colorModel = this.color.getRgb();
-            if(colorModel === 'hex') colorModel = this.color.getHex();
-            if(colorModel === 'hsl') colorModel = this.color.getHsl();
-            this.model = colorModel;
-        }
+    changeTo(colorModel) {
+      if (colorModel === "rgb")
+        colorModel = `rgb(${this.color.getRgb().join(", ")})`; // return as [r, g, b]
+      if (colorModel === "hex") colorModel = this.color.getHex();
+      if (colorModel === "hsl") colorModel = this.toHSL(this.color.getHsl());
+      this.model = colorModel;
     },
-    mounted() {
-        this.$el.style.background = this.color.getHex();
-        this.$el.style.color = this.color.getBodyTextColor();
-        console.log('im being mounted');
+    toHSL(hslAsArray) {
+      // hsl is (angle, percentage , percentage)
+      return `hsl(${Math.floor(hslAsArray[0] * 360)}, ${Math.floor(
+        hslAsArray[1] * 100
+      )}%, ${Math.floor(hslAsArray[1] * 100)}%)`;
     }
-}
+  },
+  mounted() {
+    this.$el.style.background = this.color.getHex();
+    this.$el.style.color = this.color.getBodyTextColor();
+    console.log("im being mounted");
+  }
+};
 </script>
 
