@@ -1,6 +1,7 @@
-![Logo](logo.png)
 # DomiColor
 DomiColor is a web application that **extracts dominant colors from an image** and displays useful information about them.
+
+![Domicolor demo](domicolor.gif)
 
 ## Why
 I was always aproaching the terminal to run a node script to extract colors from images, and I thought an interface would be lovely. So, I decided to build this.
